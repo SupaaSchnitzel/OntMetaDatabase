@@ -1,0 +1,44 @@
+{
+    "name": "test",
+    "languages": [
+      "1",
+      "2",
+      "3"
+    ],
+    "ont_languages": "ont_languages",
+    "sourcecode": "sourcecode",
+    "access": "access",
+    "license": "license",
+    "used_upper": "used_upper",
+    "funding":  [
+      "1",
+      "2",
+      "3"
+    ],
+    "gov_inst": "gov_inst",
+    "maintenance": "maintenance",
+    "release": "release",
+    "citations": 5,
+    "scope": "scope",
+    "desc_size": "desc_size",
+    "desc_quality": "desc_quality",
+    "no_terms": [
+      "1",
+      "2",
+      "3"
+    ],
+    "used_ont": [
+      "1",
+      "2",
+      "3"
+    ],
+    "creation": "creation",
+    "analysis": "analysis",
+    "modularity": "modularity",
+    "extensability": "extensability",
+    "validation": "validation",
+    "ac_score": 2.3,
+    "gov_score": 2.3,
+    "bp_score": 2.3,
+    "pi_score": 2.3
+  }
