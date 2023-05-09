@@ -45,7 +45,7 @@ Before starting :checkered_flag:, you need to install the requirements in the re
 $ git clone https://github.com/SupaaSchnitzel/OntMetaDatabase
 
 # Access
-$ cd OntMetaDatabase
+$ cd OntMetaDatabase/app
 
 # Install dependencies
 $ pip install -r requirements.txt
@@ -62,6 +62,23 @@ $ flask run
 # The script will open a reachable api at localhost:5000
 ```
 A prototype json is added inside the repo to test the API functionality.
+
+### Startup with Docker ###
+```bash
+# Clone this project
+$ git clone https://github.com/SupaaSchnitzel/OntMetaDatabase
+
+# Access
+$ cd OntMetaDatabase
+
+# Build containers
+$ docker-compose build
+
+# Start containers
+$ docker-compose up
+
+# The script will open a reachable api at the Endpoint that is shown in the terminal
+```
 
 ## :memo: License ##
 
