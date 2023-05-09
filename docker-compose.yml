@@ -1,0 +1,25 @@
+version: "3"
+services:
+  app :
+    build: ./app
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    command: python app.py
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
+  
+  

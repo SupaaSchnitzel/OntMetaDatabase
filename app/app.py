@@ -8,10 +8,10 @@ from flask_cors import CORS, cross_origin
 
 #Database Information
 UNAME = 'postgres'
-PWD = '12345'
-HOST = 'localhost'
+PWD = 'postgres'
+HOST = 'db'
 PORT =  '5432'
-DBNAME = 'postgresdb'
+DBNAME = 'postgres'
 #INIT FLASK
 app = Flask(__name__)
 #INIT SQLALchemy
