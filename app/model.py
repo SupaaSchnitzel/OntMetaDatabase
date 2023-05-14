@@ -5,8 +5,14 @@ db = SQLAlchemy()
 
 #Ontology Model Sqlalchemy
 class Ontology(db.Model):
-    ''' Sqlalchemy Model for the Ontology database
-    '''
+    """Sqlalchemy Model for the Ontology database
+
+    Args:
+        db (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     __tablename__ = 'ontology'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
@@ -37,5 +43,10 @@ class Ontology(db.Model):
     pi_score = db.Column(db.Float())
 
     def __repr__(self):
+        """Representation function
+
+        Returns:
+            _type_: Description String
+        """
         return f"<Ontology {self.name}>"
     

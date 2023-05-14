@@ -6,6 +6,8 @@ from webargs.flaskparser import use_args, parser, abort
 from model import db, Ontology
 from flask_cors import CORS, cross_origin
 
+
+
 #Database Information
 UNAME = 'postgres'
 PWD = 'postgres'
@@ -26,8 +28,9 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 def init_database(self):
-    '''Initializes the empty database
-    '''
+    """Initializes the empty database
+
+    """
     db.create_all()
 
 #Marshmallow Arguments    
@@ -96,12 +99,19 @@ ontlists = ["languages","funding","no_terms","used_ont",]
 
 #flask restfull for ontologies
 class Ont(Resource):
-    '''Flask class for the ont endpoint
-    '''
+    """
+    Flask class for the ont endpoint
+    """
 
     def results(self, ontologies):
-        '''Helper function that aggregates the results
-        '''
+        """
+        Helper function that aggregates the results
+
+        Parameters:
+        ----------
+        ontologies
+            A list of ontologies that are to be returned
+        """
         results = [
                 {
                     "name": ont.name,
@@ -135,8 +145,14 @@ class Ont(Resource):
 
     @use_args(user_args, location='querystring')
     def get(self, args):
-        '''Get function of the endpoint
-        '''
+        """
+        Get function of the endpoint
+
+        Parameters:
+        ----------
+        args
+            A list of arguments to be parsed
+        """
         if 'id' in args.keys():
             id =args['id']
             onts = [Ontology.query.filter_by(id=id).one()]
@@ -144,18 +160,11 @@ class Ont(Resource):
             for i, arg in enumerate(args):
                 if args[arg] != "":
                     if i == 0:
-                        print(type(args[arg]))
-                        print(args[arg])
                         if arg in ontlists:
-                            
                             onts =  Ontology.query.filter(ontbib[arg].contains(args[arg]))
                         else:
-                            print('saved as')
-                            print(Ontology.query.filter(Ontology.name == 'cim').all()[0].ont_languages in 'RDF/XML')
                             onts =  Ontology.query.filter(ontbib[arg]==args[arg])
                     else:
-                        print(type(args[arg]))
-                        print(args[arg])
                         if arg in ontlists:
                             onts =  onts.filter(ontbib[arg].contains(args[arg]))
                         else:
@@ -166,8 +175,14 @@ class Ont(Resource):
         return self.results(onts)
     
     def post(self):
-        '''Post function of the endpoint
-        '''
+        """
+        Post function of the endpoint
+
+        Parameters:
+        ----------
+        args
+            A list of arguments to be parsed
+        """
         if request.is_json:
             data = request.get_json()
             new_ont = Ontology(name=data['name'], languages = data['languages'], ont_languages= data['ont_languages'],sourcecode= data['sourcecode'], access= data['access'], license= data['license'],
@@ -183,8 +198,14 @@ class Ont(Resource):
     
     @use_args(user_args, location='querystring')    
     def delete(self, args):
-        '''Delete Function of the endpoint
-        '''
+        """
+        Delete Function of the endpoint
+        
+        Parameters:
+        ----------
+        args
+            A list of arguments to be parsed
+        """
         if args['id']:
             Ontology.query.filter_by(id=args['id']).delete()
             db.session.commit()
@@ -193,19 +214,31 @@ class Ont(Resource):
             return {"message": f"ont {args['id']} invalid or missing"}
         
 class Names(Resource):
-    '''Flask class for the names endpoint
-    '''
+    """
+        Flask class for the names endpoint
+
+    """
 
     def results(self, ontologies):
-        '''Helper function that aggregates the results as a json
-        '''
+        """
+        Helper function that aggregates the results as a json
+
+        Parameters:
+        ----------
+        ontologies
+            A list of ontologies to be returned
+        """
         results = [ont.name for ont in ontologies]
         return {"count": len(results), "onts": results}
 
     @use_args(user_args, location='querystring')
     def get(self, args):
-        '''Get function of the endpoint
-        '''
+        """
+        Get function of the endpoint
+
+        Returns:
+            _type_: _description_
+        """
         if 'id' in args.keys():
             id =args['id']
             onts = [Ontology.query.filter_by(id=id).one()]
@@ -213,18 +246,11 @@ class Names(Resource):
             for i, arg in enumerate(args):
                 if args[arg] != "":
                     if i == 0:
-                        print(type(args[arg]))
-                        print(args[arg])
                         if arg in ontlists:
-                            
                             onts =  Ontology.query.filter(ontbib[arg].contains(args[arg]))
                         else:
-                            print('saved as')
-                            print(Ontology.query.filter(Ontology.name == 'cim').all()[0].ont_languages in 'RDF/XML')
                             onts =  Ontology.query.filter(ontbib[arg]==args[arg])
                     else:
-                        print(type(args[arg]))
-                        print(args[arg])
                         if arg in ontlists:
                             onts =  onts.filter(ontbib[arg].contains(args[arg]))
                         else:
@@ -237,11 +263,20 @@ class Names(Resource):
     
 
 class Possible(Resource):
-    '''Flask class for the possible endpoint
-    '''
+    """
+    Flask class for the possible Endpoint
+
+    Returns:
+        _type_: _description_
+    """
     def update_dict(self,dict,key,value):
-        '''Helper function that updates a dictionary
-        '''
+        """Helper function that updates a dictionary
+
+        Parameters:
+            dict (_type_): Dictionary to be updated
+            key (_type_): Key to do the update on
+            value (_type_): Value for the key
+        """
         if key in dict:
             if isinstance(value,list):
                 dict[key]+=(value)
@@ -255,8 +290,12 @@ class Possible(Resource):
         dict[key] = list( dict.fromkeys(dict[key]))
 
     def process(self, ontologies, ret):
-        '''Helper function
-        '''
+        """Helper function
+
+        Args:
+            ontologies (_type_): _description_
+            ret (_type_): _description_
+        """
         for ont in ontologies:
             self.update_dict(ret, 'languages', ont.languages)
             self.update_dict(ret, 'ont_languages', ont.ont_languages)
@@ -287,10 +326,17 @@ class Possible(Resource):
     @cross_origin()
     @use_args(user_args_2, location='querystring')
     def get(self, args):
-        '''Get Function of the endpoint
-        '''
+        """Get Function of the Endpoint
+
+        Args:
+            args (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         ret={}
         if args:
+            
             for i, arg in enumerate(args):
                 if args[arg] != "": 
                     for name in args[arg]:
@@ -315,13 +361,20 @@ api.add_resource(Possible, '/possible/')
 
 @app.get("/")
 def home():
+    """Home endpoint
+
+    Returns:
+        _type_: _description_
+    """
     return "Not an endpoint"
 
 
 @parser.error_handler
 def handle_request_parsing_error(err, req, schema, *, error_status_code, error_headers):
-    """webargs error handler that uses Flask-RESTful's abort function to return
+    """
+    webargs error handler that uses Flask-RESTful's abort function to return
     a JSON error response to the client.
+
     """
     abort(error_status_code, errors=err.messages)  
 
