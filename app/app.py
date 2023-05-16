@@ -5,7 +5,7 @@ from webargs import fields
 from webargs.flaskparser import use_args, parser, abort
 from model import db, Ontology
 from flask_cors import CORS, cross_origin
-
+from flask_swagger_ui import get_swaggerui_blueprint
 
 
 #Database Information
@@ -19,6 +19,15 @@ app = Flask(__name__)
 #INIT SQLALchemy
 app.config['SQLALCHEMY_DATABASE_URI'] =f"postgresql://{UNAME}:{PWD}@{HOST}:{PORT}/{DBNAME}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#INIT SWAGGERUI
+swaggerui_blueprint = get_swaggerui_blueprint(
+    '/api/v1/docs',
+    '/static/swagger.json',
+    config={
+        'app_name': "OntMetaDatabase"
+    }
+)
+app.register_blueprint(swaggerui_blueprint, url_prefix='/api/v1/docs')
 #Init apu, database and cors
 api = Api(app)
 db.init_app(app)
@@ -26,6 +35,7 @@ migrate = Migrate(app, db)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+    
 
 def init_database(self):
     """Initializes the empty database
@@ -154,8 +164,7 @@ class Ont(Resource):
             A list of arguments to be parsed
         """
         if 'id' in args.keys():
-            id =args['id']
-            onts = [Ontology.query.filter_by(id=id).one()]
+            onts = [Ontology.query.get(args['id']).one()]
         elif args:
             for i, arg in enumerate(args):
                 if args[arg] != "":
@@ -358,15 +367,6 @@ class Possible(Resource):
 api.add_resource(Ont, '/ont/')
 api.add_resource(Names, '/names/')
 api.add_resource(Possible, '/possible/')
-
-@app.get("/")
-def home():
-    """Home endpoint
-
-    Returns:
-        _type_: _description_
-    """
-    return "Not an endpoint"
 
 
 @parser.error_handler

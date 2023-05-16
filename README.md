@@ -60,6 +60,7 @@ $ python app.py
 $ flask run
 
 # The script will open a reachable api at localhost:5000
+# The SwaggerUI documentation will be available under /api/v1/docs
 ```
 A prototype json is added inside the repo to test the API functionality.
 
@@ -78,6 +79,7 @@ $ docker-compose build
 $ docker-compose up
 
 # The script will open a reachable api at the Endpoint that is shown in the terminal
+# The SwaggerUI documentation will be available under /api/v1/docs
 ```
 
 ## :memo: License ##

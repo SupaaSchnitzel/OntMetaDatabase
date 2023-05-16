@@ -1,0 +1,983 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+      "title":"OntMetaDatabase",
+      "version":"1.0"
+    },
+    "servers": [
+      {"url":"http://localhost:5000"}
+    ],
+    "components": {
+        "schemas": {
+            "possibleret": {
+                "type": "object",
+                "properties": {
+                    "languages": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "ont_languages": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "sourcecode": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "access": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "license": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "used_upper": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "funding": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "gov_inst": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "maintenance": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "release": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "citations": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "scope": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "desc_size": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "desc_quality": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "no_terms": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "used_ont": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "creation": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "analysis": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "modularity": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "extensability": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "validation": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "ac_score": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "gov_score": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "bp_score": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    },
+                    "pi_score": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ontret": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "example":1
+                    },
+                    "onts":{
+                        "type": "array",
+                        "items":{
+                            "type": "object",
+                            "$ref": "#/components/schemas/ontology"
+                        }
+                    }
+                }
+            },
+            "nameret": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "onts": {
+                        "type": "array",
+                        "items":{
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ontology": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example":"cim"
+                    },
+                    "languages": {
+                        "type": "array",
+                        "items":{
+                            "type": "string",
+                            "example":"en"
+                        }
+                    },
+                    "ont_languages": {
+                        "type": "string",
+                        "example":"RDF XML"
+                    },
+                    "sourcecode": {
+                        "type": "string",
+                        "example":"2 plus"
+                    },
+                    "access": {
+                        "type": "string",
+                        "example":"open source"
+                    },
+                    "license": {
+                        "type": "string",
+                        "example":"CC0"
+                    },
+                    "used_upper": {
+                        "type": "string",
+                        "example":"BFO"
+                    },
+                    "funding": {
+                        "type": "array",
+                        "items":{
+                            "type": "string",
+                            "example":"Germany"
+                        }
+                    },
+                    "gov_inst": {
+                        "type": "string",
+                        "example":"Brick Consortium"
+                    },
+                    "maintenance": {
+                        "type": "string",
+                        "example":"Maintained"
+                    },
+                    "release": {
+                        "type": "string",
+                        "example":"V1.0(11.11.2022)"
+                    },
+                    "citations": {
+                        "type": "integer",
+                        "example":5
+                    },
+                    "scope": {
+                        "type": "string",
+                        "example":"general"
+                    },
+                    "desc_size": {
+                        "type": "string",
+                        "example":"small"
+                    },
+                    "desc_quality": {
+                        "type": "string",
+                        "example":"easy"
+                    },
+                    "no_terms": {
+                        "type": "array",
+                        "items":{
+                            "type": "string",
+                            "example":"total: 500"
+                        }
+                    },
+                    "used_ont": {
+                        "type": "array",
+                        "items":{
+                            "type": "string",
+                            "example":"rdf"
+                        }
+                    },
+                    "creation": {
+                        "type": "string",
+                        "example":"automatic"
+                    },
+                    "analysis": {
+                        "type": "string",
+                        "example":"Problems"
+                    },
+                    "modularity": {
+                        "type": "string",
+                        "example":"modular"
+                    },
+                    "extensability": {
+                        "type": "string",
+                        "example":"extensible"
+                    },
+                    "validation": {
+                        "type": "string",
+                        "example":"Validated"
+                    },
+                    "ac_score": {
+                        "type": "number",
+                        "example":2.4,
+                        "maximum": 3.0,
+                        "minimum": 0.0
+                    },
+                    "gov_score": {
+                        "type": "number",
+                        "example":2.4,
+                        "maximum": 3.0,
+                        "minimum": 0.0
+                    },
+                    "bp_score": {
+                        "type": "number",
+                        "example":2.4,
+                        "maximum": 3.0,
+                        "minimum": 0.0
+                    },
+                    "pi_score": {
+                        "type": "number",
+                        "example":2.4,
+                        "maximum": 3.0,
+                        "minimum": 0.0
+                    }
+                }
+            },
+            "request_body": {
+                "type": "object",
+                "properties": {
+                    "property": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    },
+    "paths": {
+        "/ont": {
+            "get": {
+                "description": "Returns a list of ontologies that fit the parameters in json format.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "integer"},
+                        "example":1,
+                        "description": "The id of the ontology."
+                    },
+                    {
+                    "name": "name",
+                    "in": "query",
+                    "required": false,
+                    "schema":{"type": "string"},
+                    "example":"cim",
+                    "description": "The name of the ontology."
+                    },
+                    {
+                        "name": "languages",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "array",
+                            "items":{
+                                "type": "string"
+                            }
+                        },
+                        "example":["de","fr"],
+                        "description": "The languages of the ontology."
+                    },
+                    {
+                        "name": "ont_languages",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"owl",
+                        "description": "The ontology language formats of the ontology."
+                    },
+                    {
+                        "name": "sourcecode",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"2plus",
+                        "description": "The number of sourcecode sources of the ontology."
+                    },
+                    {
+                        "name": "access",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"opensource",
+                        "description": "The accessibility of the ontology."
+                    },
+                    {
+                        "name": "license",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"CC0",
+                        "description": "The license of the ontology."
+                    },
+                    {
+                        "name": "used_upper",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"BFO",
+                        "description": "The upper ontology used as the ontologies base."
+                    },
+                    {
+                        "name": "funding",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "array",
+                            "items":{
+                                "type": "string"
+                            }
+                        },
+                        "example":["Turkey", "Germany"],
+                        "description": "The countries where funding came from for the ontology."
+                    },
+                    {
+                        "name": "gov_inst",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"Brick Consortium",
+                        "description": "The governing instance of the ontology."
+                    },
+                    {
+                        "name": "maintenance",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"Not Found",
+                        "description": "The maintenance status of the ontology."
+                    },
+                    {
+                        "name": "release",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"V1.0",
+                        "description": "The release version of the ontology."
+                    },
+                    {
+                        "name": "citations",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"15",
+                        "description": "The citations of the ontology."
+                    },
+                    {
+                        "name": "scope",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"general",
+                        "description": "The scope of the ontology."
+                    },
+                    {
+                        "name": "desc_size",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"small",
+                        "description": "The description size of the ontology."
+                    },
+                    {
+                        "name": "desc_quality",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"hard",
+                        "description": "The description quality of the ontology."
+                    },
+                    {
+                        "name": "no_terms",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "array",
+                            "items":{
+                                "type": "string"
+                            }
+                        },
+                        "example":["300","100"],
+                        "description": "The number of terms of the ontology."
+                    },
+                    {
+                        "name": "used_onts",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "array",
+                            "items":{
+                                "type": "string"
+                            }
+                        },
+                        "example":["rdf","rdfs"],
+                        "description": "The other ontologies used in the ontology."
+                    },
+                    {
+                        "name": "creation",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"automatic",
+                        "description": "The creation method used in the making of the ontology."
+                    },
+                    {
+                        "name": "analysis",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"Problems",
+                        "description": "The results of the automatic analysis of the ontology."
+                    },
+                    {
+                        "name": "modularity",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"modular",
+                        "description": "The modularity of the ontology."
+                    },
+                    {
+                        "name": "extensability",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"extensible",
+                        "description": "The extensability of the ontology."
+                    },
+                    {
+                        "name": "validation",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"Validated by Experts",
+                        "description": "The validation method used in the making of the ontology."
+                    },
+                    {
+                        "name": "ac_score",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "number",
+                        "minimum": 0.0,
+                        "maximum": 3.0
+                        },
+                        "example":2.4,
+                        "description": "The maintenance and accessibility score of the ontology."
+                    },
+                    {
+                        "name": "gov_score",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "number",
+                        "minimum": 0.0,
+                        "maximum": 3.0
+                        },
+                        "example":2.4,
+                        "description": "The governance score of the ontology."
+                    },
+                    {
+                        "name": "bp_score",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "number",
+                        "minimum": 0.0,
+                        "maximum": 3.0
+                        },
+                        "example":2.4,
+                        "description": "The best practice score of the ontology."
+                    },
+                    {
+                        "name": "pi_score",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "number",
+                        "minimum": 0.0,
+                        "maximum": 3.0
+                        },
+                        "example":2.4,
+                        "description": "The practical implementation score of the ontology."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of ontologies",
+                        "content" :{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "$ref": "#/components/schemas/ontret"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new Ontology.",
+                "requestBody":{
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/ontology"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ontology has been created",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Deletes the ontology with the given id.",
+                "parameters": [{
+                    "name": "id",
+                    "in": "query",
+                    "required": false,
+                    "schema":{"type": "integer"},
+                    "example":0,
+                    "description": "The id an ontology has in the database."
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ontology has been deleted.",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/names": {
+            "get": {
+                "description": "Returns a list of ontology names that fit the criteria values given in the query. If no parameters are given returns a list of all ontology names.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "integer"},
+                        "example":1,
+                        "description": "The id of the ontology."
+                    },
+                    {
+                    "name": "name",
+                    "in": "query",
+                    "required": false,
+                    "schema":{"type": "string"},
+                    "example":"cim",
+                    "description": "The name of the ontology."
+                    },
+                    {
+                        "name": "languages",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "array",
+                            "items":{
+                                "type": "string"
+                            }
+                        },
+                        "example":["de","fr"],
+                        "description": "The languages of the ontology."
+                    },
+                    {
+                        "name": "ont_languages",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"owl",
+                        "description": "The ontology language formats of the ontology."
+                    },
+                    {
+                        "name": "sourcecode",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"2plus",
+                        "description": "The number of sourcecode sources of the ontology."
+                    },
+                    {
+                        "name": "access",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"opensource",
+                        "description": "The accessibility of the ontology."
+                    },
+                    {
+                        "name": "license",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"CC0",
+                        "description": "The license of the ontology."
+                    },
+                    {
+                        "name": "used_upper",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"BFO",
+                        "description": "The upper ontology used as the ontologies base."
+                    },
+                    {
+                        "name": "funding",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "array",
+                            "items":{
+                                "type": "string"
+                            }
+                        },
+                        "example":["Turkey", "Germany"],
+                        "description": "The countries where funding came from for the ontology."
+                    },
+                    {
+                        "name": "gov_inst",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"Brick Consortium",
+                        "description": "The governing instance of the ontology."
+                    },
+                    {
+                        "name": "maintenance",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"Not Found",
+                        "description": "The maintenance status of the ontology."
+                    },
+                    {
+                        "name": "release",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"V1.0",
+                        "description": "The release version of the ontology."
+                    },
+                    {
+                        "name": "citations",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"15",
+                        "description": "The citations of the ontology."
+                    },
+                    {
+                        "name": "scope",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"general",
+                        "description": "The scope of the ontology."
+                    },
+                    {
+                        "name": "desc_size",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"small",
+                        "description": "The description size of the ontology."
+                    },
+                    {
+                        "name": "desc_quality",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"hard",
+                        "description": "The description quality of the ontology."
+                    },
+                    {
+                        "name": "no_terms",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "array",
+                            "items":{
+                                "type": "string"
+                            }
+                        },
+                        "example":["300","100"],
+                        "description": "The number of terms of the ontology."
+                    },
+                    {
+                        "name": "used_onts",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "array",
+                            "items":{
+                                "type": "string"
+                            }
+                        },
+                        "example":["rdf","rdfs"],
+                        "description": "The other ontologies used in the ontology."
+                    },
+                    {
+                        "name": "creation",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"automatic",
+                        "description": "The creation method used in the making of the ontology."
+                    },
+                    {
+                        "name": "analysis",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"Problems",
+                        "description": "The results of the automatic analysis of the ontology."
+                    },
+                    {
+                        "name": "modularity",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"modular",
+                        "description": "The modularity of the ontology."
+                    },
+                    {
+                        "name": "extensability",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"extensible",
+                        "description": "The extensability of the ontology."
+                    },
+                    {
+                        "name": "validation",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "string"
+                        },
+                        "example":"Validated by Experts",
+                        "description": "The validation method used in the making of the ontology."
+                    },
+                    {
+                        "name": "ac_score",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "number",
+                        "minimum": 0.0,
+                        "maximum": 3.0
+                        },
+                        "example":2.4,
+                        "description": "The maintenance and accessibility score of the ontology."
+                    },
+                    {
+                        "name": "gov_score",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "number",
+                        "minimum": 0.0,
+                        "maximum": 3.0
+                        },
+                        "example":2.4,
+                        "description": "The governance score of the ontology."
+                    },
+                    {
+                        "name": "bp_score",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "number",
+                        "minimum": 0.0,
+                        "maximum": 3.0
+                        },
+                        "example":2.4,
+                        "description": "The best practice score of the ontology."
+                    },
+                    {
+                        "name": "pi_score",
+                        "in": "query",
+                        "required": false,
+                        "schema":{"type": "number",
+                        "minimum": 0.0,
+                        "maximum": 3.0
+                        },
+                        "example":2.4,
+                        "description": "The practical implementation score of the ontology."
+                    }
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of ontology names to be returned.",
+                        "content" :{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "$ref": "#/components/schemas/nameret"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/possible": {
+            "get": {
+                "description": "Returns a list of all possible Ontology Metadata Values except name and id. If the name parameter is given, returns a list of values for the given names.",
+                "parameters": [{
+                    "name": "name",
+                    "in": "query",
+                    "required": false,
+                    "schema":{"type": "string"},
+                    "example":"cim",
+                    "description": "The name of the ontology."
+                }],
+                "responses": {
+                    "200": {
+                        "description": "A list of possible ontology metadata values to be reutrned",
+                        "content" :{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "$ref":"#/components/schemas/possibleret"
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+  }
