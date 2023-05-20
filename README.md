@@ -16,7 +16,7 @@
 
 ## :dart: About ##
 
- A Ontology Metadata Database based on PostgreSQl and a REST-API that connects to it written in Python
+ A Ontology Metadata Database based on PostgreSQL and a REST-API that connects to it written in Python
 
 ## :sparkles: Features ##
 
